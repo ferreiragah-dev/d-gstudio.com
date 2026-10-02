@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, MoonStar, SunMedium, X } from "lucide-react";
 import { Logo } from "./logo";
 import { navigation } from "@/config/site";
 import { Container } from "./ui";
@@ -9,7 +9,29 @@ import { Container } from "./ui";
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const toggle = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem("dgstudio-theme");
+    const preferredTheme =
+      storedTheme === "light" || storedTheme === "dark"
+        ? storedTheme
+        : window.matchMedia("(prefers-color-scheme: light)").matches
+          ? "light"
+          : "dark";
+
+    setTheme(preferredTheme);
+    document.documentElement.setAttribute("data-theme", preferredTheme);
+    document.documentElement.style.colorScheme = preferredTheme;
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.style.colorScheme = theme;
+    window.localStorage.setItem("dgstudio-theme", theme);
+  }, [theme]);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
@@ -33,6 +55,11 @@ export function Header() {
       window.removeEventListener("resize", resize);
     };
   }, [open]);
+
+  const toggleTheme = () => {
+    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
+  };
+
   return (
     <header className={`site-header ${scrolled || open ? "is-scrolled" : ""}`}>
       <Container className="header-inner">
@@ -62,6 +89,17 @@ export function Header() {
             Solicitar orçamento <ArrowUpRight size={16} />
           </a>
         </nav>
+        <button
+          type="button"
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label={
+            theme === "dark" ? "Ativar modo claro" : "Ativar modo escuro"
+          }
+          title={theme === "dark" ? "Ativar modo claro" : "Ativar modo escuro"}
+        >
+          {theme === "dark" ? <SunMedium size={16} /> : <MoonStar size={16} />}
+        </button>
         <a href="#orcamento" className="button header-cta">
           Solicitar orçamento <ArrowUpRight size={16} aria-hidden="true" />
         </a>
