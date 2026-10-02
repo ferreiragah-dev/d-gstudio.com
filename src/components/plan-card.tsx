@@ -2,11 +2,18 @@ import { ArrowUpRight, Check, Sparkles } from "lucide-react";
 import { Badge, ButtonLink } from "./ui";
 import type { Plan } from "@/types";
 
-export function PlanCard({ plan }: { plan: Plan }) {
+export function PlanCard({
+  plan,
+  reveal = true,
+}: {
+  plan: Plan;
+  // Desligado no carrossel: o transform do reveal brigaria com o do carrossel.
+  reveal?: boolean;
+}) {
   return (
     <article
       className={`plan-card ${plan.featured ? "plan-featured" : ""}`}
-      data-reveal
+      data-reveal={reveal ? "" : undefined}
     >
       <div className="plan-top">
         <span>PROJETO</span>

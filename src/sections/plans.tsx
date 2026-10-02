@@ -1,5 +1,5 @@
 import { Container, SectionHeader } from "@/components/ui";
-import { PlanCard } from "@/components/plan-card";
+import { PlansCarousel } from "@/components/plans-carousel";
 import { plans } from "@/data/plans";
 export function Plans() {
   return (
@@ -16,11 +16,7 @@ export function Plans() {
           }
           description="Do primeiro passo a uma solução completa. Encontre o ponto de partida para o seu projeto."
         />
-        <div className="plans-grid">
-          {plans.map((plan) => (
-            <PlanCard key={plan.name} plan={plan} />
-          ))}
-        </div>
+        <PlansCarousel plans={plans} />
       </Container>
     </section>
   );
