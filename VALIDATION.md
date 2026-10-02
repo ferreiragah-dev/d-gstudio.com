@@ -31,3 +31,9 @@ Resultados de laboratório variam com máquina, hospedagem e rede. O relatório 
 ## Configuração restante para publicação
 
 O código está compilado e pronto para hospedagem com Next.js/Node. Domínio, WhatsApp, e-mail, Instagram e destino de recebimento dependem dos dados reais da empresa. Nenhum contato foi inventado. Sem `QUOTE_WEBHOOK_URL`, o formulário informa a indisponibilidade de envio e oferece um resumo local. A entrega real ao CRM/e-mail não foi testada porque nenhum endpoint ou credencial foi fornecido. Consulte o README para ativar e validar essa integração.
+
+## Atualização de deploy com Dockerfile
+
+Adicionados Dockerfile em múltiplas etapas e `.dockerignore`, com Node 24 e saída standalone ativada somente no build do contêiner. Lint, typecheck e builds normal e standalone aprovados. O servidor standalone foi iniciado localmente e verificado com Chromium: página principal, oito serviços, arquivos estáticos, privacidade, imagem social e validação da API responderam corretamente, sem erros de página ou recursos HTTP.
+
+A imagem Docker não pôde ser construída localmente: o Docker Desktop retornou HTTP 500 ao consultar o engine Linux. A validação do contêiner completo deverá ocorrer no deploy do Easypanel; o teste local validou o artefato standalone usado pela imagem.

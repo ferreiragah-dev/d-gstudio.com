@@ -94,9 +94,32 @@ O Playwright inicia o servidor de produção automaticamente. O teste de rascunh
 
 Resultados da entrega e medição Lighthouse: [VALIDATION.md](./VALIDATION.md).
 
+## Deploy no Easypanel com Dockerfile
+
+O repositório inclui um Dockerfile com Node 24, build em múltiplas etapas e servidor Next.js standalone executado como usuário não root. Esse caminho não depende de Railpack, Nixpacks ou Mise.
+
+1. Em **Fonte**, mantenha o repositório GitHub, branch `main` e Build Path `/`.
+2. Em **Construção**, selecione **Dockerfile** e informe `Dockerfile` como caminho.
+3. Não sobrescreva o comando de início: a imagem já executa `node server.js`.
+4. No domínio, configure a porta de destino **3000** e HTTP entre o proxy e o contêiner. O HTTPS fica no domínio/proxy.
+5. Configure os contatos e a URL HTTPS real em **Ambiente**, antes de fazer o build. Os quatro `NEXT_PUBLIC_*` do `.env.example` são aceitos como build arguments; após alterá-los, refaça o build.
+6. Configure `QUOTE_WEBHOOK_URL` e `QUOTE_WEBHOOK_TOKEN` somente nas variáveis do serviço em execução. Não são copiados para a imagem durante o build.
+7. Salve e execute **Deploy**. As variáveis `RAILPACK_*` podem ser removidas, pois não são usadas por esse método.
+
+Teste local com Docker:
+
+```sh
+docker build -t dg-studio .
+docker run --rm -p 3000:3000 dg-studio
+```
+
+Para testar contatos, passe os `--build-arg NEXT_PUBLIC_...` correspondentes no build. `NEXT_STANDALONE=true` é definido internamente pelo Dockerfile; não é necessário configurá-lo no Easypanel. Os comandos locais `npm run build` / `npm run start` continuam funcionando normalmente fora do Docker.
+
 ## Referências técnicas
 
 - [Documentação oficial Next.js](https://nextjs.org/docs)
 - [Tailwind com Next.js](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
+- [Dockerfile e variáveis de build no Easypanel](https://easypanel.io/docs/builders)
+- [Deploy standalone do Next.js](https://nextjs.org/docs/app/getting-started/deploying)
 
 Todos os arquivos deste repositório foram criados do zero: a pasta inicial estava vazia. O lockfile fixa as versões instaladas para builds reproduzíveis.
