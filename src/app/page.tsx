@@ -2,12 +2,12 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
 import { Hero } from "@/sections/hero";
-import { Services, ProjectTypes } from "@/sections/services";
+import { Services } from "@/sections/services";
 import { Process } from "@/sections/process";
 import { Plans } from "@/sections/plans";
 import { Portfolio } from "@/sections/portfolio";
 import { About } from "@/sections/about";
-import { Contact, FinalCta } from "@/sections/contact";
+import { Contact } from "@/sections/contact";
 import { siteConfig } from "@/config/site";
 
 // A disponibilidade do envio reflete as variáveis do servidor em tempo de execução.
@@ -31,13 +31,11 @@ export default function Home() {
       <main id="conteudo">
         <Hero />
         <Services />
-        <ProjectTypes />
         <Process />
         <Plans />
         <Portfolio />
         <About />
         <Contact />
-        <FinalCta />
       </main>
       <Footer />
       <Reveal />

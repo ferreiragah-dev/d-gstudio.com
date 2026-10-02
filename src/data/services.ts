@@ -53,27 +53,3 @@ export const services: Service[] = [
     icon: Wrench,
   },
 ];
-
-export const siteTypes = [
-  "Sites institucionais",
-  "Sites empresariais",
-  "Sites pessoais",
-  "Sites profissionais",
-  "Landing pages",
-  "Sites de serviços",
-  "Sites para eventos",
-  "Sites para restaurantes",
-  "Sites para profissionais autônomos",
-  "Sites para pequenas empresas",
-  "Sites para grandes empresas",
-  "Blogs",
-];
-export const portfolioTypes = [
-  "Portfólio profissional",
-  "Portfólio para designers",
-  "Portfólio para fotógrafos",
-  "Portfólio para arquitetos",
-  "Portfólio para desenvolvedores",
-  "Currículo online",
-  "Página pessoal",
-];

@@ -234,8 +234,7 @@ ol {
 .text-link:hover {
   color: #b2a5ff;
 }
-.section-heading h2,
-.types-layout h2 {
+.section-heading h2 {
   font-size: clamp(29px, 3vw, 41px);
   letter-spacing: -1.6px;
   font-weight: 600;
@@ -980,93 +979,6 @@ ol {
   align-items: center;
   color: #d0c9eb;
   margin-left: 4px;
-}
-.types-section {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: #0a0e1a;
-  padding-block: 72px;
-}
-.types-layout {
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 90px;
-  align-items: center;
-}
-.types-layout h2 {
-  font-size: 32px;
-}
-.types-layout p {
-  margin-top: 18px;
-  color: var(--text-muted);
-  font-size: 12px;
-  max-width: 340px;
-}
-.types-layout .text-link {
-  margin-top: 24px;
-  font-size: 11px;
-  color: #d0c9f5;
-}
-.type-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.type-chips > span {
-  border: 1px solid #ffffff0f;
-  background: #ffffff02;
-  border-radius: 6px;
-  padding: 10px 14px;
-  font-size: 11px;
-  color: #b0b6c9;
-}
-.type-chips > span:nth-child(4n + 1) {
-  border-color: #8e79ff30;
-  color: #c7bdf2;
-  background: #8e79ff06;
-}
-.portfolio-types {
-  margin-top: 48px;
-  padding-top: 33px;
-  border-top: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 90px;
-}
-.portfolio-types > div:first-child {
-  display: flex;
-  gap: 18px;
-  align-items: center;
-}
-.portfolio-types svg {
-  color: #746c92;
-  flex-shrink: 0;
-}
-.portfolio-types h3 {
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: -0.4px;
-  font-weight: 500;
-}
-.portfolio-type-list {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px 19px;
-}
-.portfolio-type-list > span {
-  font-size: 10px;
-  color: #9ca4b9;
-}
-.portfolio-type-list > span::before {
-  content: "";
-  display: inline-block;
-  width: 3px;
-  height: 3px;
-  background: #66548a;
-  margin-right: 8px;
-  vertical-align: middle;
-  border-radius: 50%;
 }
 
 /* Processo e projetos */
@@ -2163,71 +2075,7 @@ body:has(.project-dialog[open]) {
   }
 }
 
-/* Convite final e rodapé */
-.final-cta {
-  padding: 12px 0 88px;
-}
-.final-cta-inner {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid #9381f025;
-  background:
-    radial-gradient(ellipse at 50% 130%, #665cff17, transparent 67%), #0c101d;
-  border-radius: 15px;
-  padding: 64px 24px;
-  text-align: center;
-}
-.final-cta-inner .eyebrow {
-  justify-content: center;
-  font-size: 8px;
-}
-.final-cta h2 {
-  font-size: clamp(35px, 4vw, 53px);
-  line-height: 1.13;
-  letter-spacing: -2px;
-  font-weight: 550;
-}
-.final-cta p {
-  font-size: 12px;
-  color: #a4abc0;
-  margin-top: 21px;
-}
-.cta-actions {
-  display: flex;
-  justify-content: center;
-  gap: 13px;
-  margin-top: 28px;
-}
-.cta-corner {
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  border-color: #9a83ee70;
-}
-.corner-tl {
-  top: 17px;
-  left: 17px;
-  border-top: 1px solid;
-  border-left: 1px solid;
-}
-.corner-tr {
-  top: 17px;
-  right: 17px;
-  border-top: 1px solid;
-  border-right: 1px solid;
-}
-.corner-bl {
-  bottom: 17px;
-  left: 17px;
-  border-bottom: 1px solid;
-  border-left: 1px solid;
-}
-.corner-br {
-  bottom: 17px;
-  right: 17px;
-  border-bottom: 1px solid;
-  border-right: 1px solid;
-}
+/* Rodapé */
 .site-footer {
   border-top: 1px solid var(--border);
   background: #070a13;
@@ -2437,8 +2285,6 @@ body:has(.project-dialog[open]) {
   .service-card {
     padding: 22px 18px 18px;
   }
-  .types-layout,
-  .portfolio-types,
   .about-grid,
   .contact-grid {
     gap: 50px;
@@ -2626,21 +2472,6 @@ body:has(.project-dialog[open]) {
   .section-side-description {
     max-width: 270px;
     font-size: 11px;
-  }
-  .types-layout,
-  .portfolio-types {
-    gap: 35px;
-    grid-template-columns: 0.9fr 1.1fr;
-  }
-  .types-layout h2 {
-    font-size: 28px;
-  }
-  .type-chips {
-    gap: 8px;
-  }
-  .type-chips > span {
-    padding: 8px 10px;
-    font-size: 9px;
   }
   .process-timeline {
     grid-template-columns: repeat(3, 1fr);
@@ -3006,8 +2837,7 @@ body:has(.project-dialog[open]) {
   .hero-baseline a svg {
     width: 11px;
   }
-  .section-heading h2,
-  .types-layout h2 {
+  .section-heading h2 {
     font-size: 30px;
     letter-spacing: -1px;
   }
@@ -3081,28 +2911,6 @@ body:has(.project-dialog[open]) {
   }
   .custom-note a {
     margin-left: 0;
-  }
-  .types-layout,
-  .portfolio-types {
-    grid-template-columns: 1fr;
-    gap: 26px;
-  }
-  .types-layout p {
-    max-width: none;
-  }
-  .type-chips > span {
-    font-size: 10px;
-    padding: 8px 11px;
-  }
-  .portfolio-types {
-    margin-top: 31px;
-    padding-top: 29px;
-  }
-  .portfolio-types h3 {
-    font-size: 18px;
-  }
-  .portfolio-type-list {
-    gap: 11px 17px;
   }
   .process-timeline {
     display: flex;
@@ -3330,33 +3138,6 @@ body:has(.project-dialog[open]) {
   .form-security {
     font-size: 8px;
   }
-  .final-cta {
-    padding: 0 0 60px;
-  }
-  .final-cta-inner {
-    padding: 47px 23px;
-  }
-  .final-cta-inner .eyebrow {
-    font-size: 6px;
-    letter-spacing: 1.3px;
-    gap: 6px;
-  }
-  .final-cta-inner .eyebrow > span {
-    width: 11px;
-  }
-  .final-cta h2 {
-    font-size: clamp(30px, 8.5vw, 42px);
-    letter-spacing: -1.3px;
-  }
-  .final-cta p {
-    font-size: 11px;
-  }
-  .cta-actions {
-    flex-direction: column;
-  }
-  .cta-actions .button {
-    width: 100%;
-  }
   .site-footer {
     padding-top: 43px;
   }
@@ -3517,7 +3298,6 @@ html[data-theme="light"] .project-overlay {
 }
 
 /* Fundos de seções e cartões */
-html[data-theme="light"] .types-section,
 html[data-theme="light"] .plans-section,
 html[data-theme="light"] .about-section {
   background: #e9effb;
@@ -3540,11 +3320,6 @@ html[data-theme="light"] .about-art {
   border-color: #5c4de42e;
   background:
     radial-gradient(ellipse at 40% 55%, #5c4de414, transparent 65%), #f7f9ff;
-}
-html[data-theme="light"] .final-cta-inner {
-  border-color: #5c4de433;
-  background:
-    radial-gradient(ellipse at 50% 130%, #5c4de41f, transparent 67%), #ffffff;
 }
 html[data-theme="light"] .dialog-close {
   background: var(--surface);
@@ -3604,9 +3379,7 @@ html[data-theme="light"] .art-studio,
 html[data-theme="light"] .differences > span,
 html[data-theme="light"] .contact-benefits,
 html[data-theme="light"] .field > label,
-html[data-theme="light"] .custom-note a,
-html[data-theme="light"] .types-layout .text-link,
-html[data-theme="light"] .type-chips > span:nth-child(4n + 1) {
+html[data-theme="light"] .custom-note a {
   color: var(--text);
 }
 html[data-theme="light"] .hero-features > span,
@@ -3615,8 +3388,6 @@ html[data-theme="light"] .scene-caption,
 html[data-theme="light"] .card-number,
 html[data-theme="light"] .service-card-link,
 html[data-theme="light"] .custom-note,
-html[data-theme="light"] .type-chips > span,
-html[data-theme="light"] .portfolio-type-list > span,
 html[data-theme="light"] .step-stage,
 html[data-theme="light"] .process-timeline p,
 html[data-theme="light"] .process-note,
@@ -3636,7 +3407,6 @@ html[data-theme="light"] .form-notice,
 html[data-theme="light"] .consent-field label,
 html[data-theme="light"] .form-security,
 html[data-theme="light"] .form-feedback p,
-html[data-theme="light"] .final-cta p,
 html[data-theme="light"] .footer-brand p,
 html[data-theme="light"] .footer-tagline,
 html[data-theme="light"] .footer-column a,
