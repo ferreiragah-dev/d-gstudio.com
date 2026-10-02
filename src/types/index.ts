@@ -6,8 +6,7 @@ export type Project = {
   name: string;
   category: string;
   type: string;
-  theme: "architecture" | "wellness" | "photography" | "store";
-  headline: string;
+  image: string;
   description: string;
   tags: string[];
 };
