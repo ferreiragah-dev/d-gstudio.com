@@ -473,7 +473,7 @@ ol {
   font-size: 10px;
 }
 .hero-baseline a:hover {
-  color: white;
+  color: var(--text);
 }
 .device-scene {
   position: relative;
@@ -3462,5 +3462,181 @@ body:has(.project-dialog[open]) {
   .reveal-pending {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Tema claro — ajustes de contraste
+   Várias seções foram criadas com fundos e textos fixos do tema escuro.
+   Aqui elas recebem fundos claros e textos escuros quando o tema claro está ativo. */
+
+/* Telas dos dispositivos e sobreposições continuam escuras: restauram os tokens escuros */
+html[data-theme="light"] .laptop-screen,
+html[data-theme="light"] .phone,
+html[data-theme="light"] .floating-label,
+html[data-theme="light"] .project-overlay {
+  --text: #f4f5fa;
+  --text-muted: #a0a8bc;
+  --border: rgba(255, 255, 255, 0.085);
+  color: var(--text);
+}
+
+/* Fundos de seções e cartões */
+html[data-theme="light"] .types-section,
+html[data-theme="light"] .plans-section,
+html[data-theme="light"] .about-section {
+  background: #e9effb;
+}
+html[data-theme="light"] .site-footer {
+  background: #e4ebf8;
+}
+html[data-theme="light"] .service-card,
+html[data-theme="light"] .plan-card,
+html[data-theme="light"] .quote-form,
+html[data-theme="light"] .project-dialog {
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+html[data-theme="light"] .plan-featured {
+  border-color: #0da88f66;
+  background: linear-gradient(145deg, #e3f8f2, #ffffff 45%);
+}
+html[data-theme="light"] .about-art {
+  border-color: #5c4de42e;
+  background:
+    radial-gradient(ellipse at 40% 55%, #5c4de414, transparent 65%), #f7f9ff;
+}
+html[data-theme="light"] .final-cta-inner {
+  border-color: #5c4de433;
+  background:
+    radial-gradient(ellipse at 50% 130%, #5c4de41f, transparent 67%), #ffffff;
+}
+html[data-theme="light"] .dialog-close {
+  background: var(--surface);
+  border-color: var(--border);
+}
+html[data-theme="light"] .project-dialog::backdrop {
+  background: #101827a6;
+}
+
+/* Destaques e textos em roxo/verde claros demais para fundo branco */
+html[data-theme="light"] .gradient-text {
+  background-image: linear-gradient(100deg, #6a56f0 2%, #5c4de4 48%, #0b9c84 100%);
+}
+html[data-theme="light"] .accent-text,
+html[data-theme="light"] .eyebrow,
+html[data-theme="light"] .badge,
+html[data-theme="light"] .text-link:hover,
+html[data-theme="light"] .service-icon,
+html[data-theme="light"] .step-number,
+html[data-theme="light"] .about-monogram > span:first-child,
+html[data-theme="light"] .required,
+html[data-theme="light"] .consent-field a,
+html[data-theme="light"] .contact-intro > .text-link,
+html[data-theme="light"] .footer-column a:hover,
+html[data-theme="light"] .footer-column .footer-contact-link,
+html[data-theme="light"] .privacy-page p a,
+html[data-theme="light"] .navigation > .mobile-quote {
+  color: var(--primary);
+}
+html[data-theme="light"] .eyebrow > span:first-child {
+  background: var(--primary);
+}
+html[data-theme="light"] .plan-featured .plan-top .badge,
+html[data-theme="light"] .about-monogram > span:last-child,
+html[data-theme="light"] .art-caption b,
+html[data-theme="light"] .plan-featured li svg,
+html[data-theme="light"] .contact-benefits svg {
+  color: var(--secondary);
+}
+html[data-theme="light"] .plan-featured .plan-top .badge {
+  background: #0da88f14;
+  border-color: #0da88f33;
+}
+
+/* Textos cinza-claro fixos passam a usar os tokens do tema */
+html[data-theme="light"] .button-secondary {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+html[data-theme="light"] .button-secondary:hover {
+  background: var(--surface-hover);
+}
+html[data-theme="light"] .hero-baseline b,
+html[data-theme="light"] .plan-card li,
+html[data-theme="light"] .art-studio,
+html[data-theme="light"] .differences > span,
+html[data-theme="light"] .contact-benefits,
+html[data-theme="light"] .field > label,
+html[data-theme="light"] .custom-note a,
+html[data-theme="light"] .types-layout .text-link,
+html[data-theme="light"] .type-chips > span:nth-child(4n + 1) {
+  color: var(--text);
+}
+html[data-theme="light"] .hero-features > span,
+html[data-theme="light"] .hero-baseline,
+html[data-theme="light"] .scene-caption,
+html[data-theme="light"] .card-number,
+html[data-theme="light"] .service-card-link,
+html[data-theme="light"] .custom-note,
+html[data-theme="light"] .type-chips > span,
+html[data-theme="light"] .portfolio-type-list > span,
+html[data-theme="light"] .step-stage,
+html[data-theme="light"] .process-timeline p,
+html[data-theme="light"] .process-note,
+html[data-theme="light"] .plan-top > span,
+html[data-theme="light"] .plan-top .badge,
+html[data-theme="light"] .plan-includes,
+html[data-theme="light"] .plan-card > small,
+html[data-theme="light"] .demo-note,
+html[data-theme="light"] .project-meta > div > span,
+html[data-theme="light"] .project-number,
+html[data-theme="light"] .dialog-tags > span,
+html[data-theme="light"] .art-top,
+html[data-theme="light"] .art-caption,
+html[data-theme="light"] .contact-decoration,
+html[data-theme="light"] .form-heading > small,
+html[data-theme="light"] .form-notice,
+html[data-theme="light"] .consent-field label,
+html[data-theme="light"] .form-security,
+html[data-theme="light"] .form-feedback p,
+html[data-theme="light"] .final-cta p,
+html[data-theme="light"] .footer-brand p,
+html[data-theme="light"] .footer-tagline,
+html[data-theme="light"] .footer-column a,
+html[data-theme="light"] .footer-location,
+html[data-theme="light"] .footer-bottom {
+  color: var(--text-muted);
+}
+html[data-theme="light"] .plan-top .badge {
+  border-color: var(--border);
+}
+
+/* Formulário */
+html[data-theme="light"] .field input,
+html[data-theme="light"] .field select,
+html[data-theme="light"] .field textarea {
+  background: #f7f9ff;
+  border-color: var(--border);
+  color: var(--text);
+}
+html[data-theme="light"] .field input::placeholder,
+html[data-theme="light"] .field textarea::placeholder,
+html[data-theme="light"] .field select:has(option:checked[value=""]) {
+  color: #75819a;
+}
+html[data-theme="light"] .field-error,
+html[data-theme="light"] .feedback-error {
+  color: #c62f3b;
+}
+html[data-theme="light"] .form-feedback {
+  color: #0b8a72;
+}
+
+/* Menu mobile */
+@media (max-width: 1099px) {
+  html[data-theme="light"] .navigation {
+    background: #f3f7fffc;
+    box-shadow: 0 20px 30px rgba(35, 44, 80, 0.1);
   }
 }
