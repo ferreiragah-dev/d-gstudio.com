@@ -34,12 +34,21 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
 };
+// Marca que há JavaScript antes da primeira pintura, para os cards de Serviços
+// começarem escondidos sem "piscar". Se o JS do site não carregar em 4 s,
+// a classe é removida e os cards voltam a aparecer normalmente.
+const jsFlagScript = `(function(d){d.classList.add("js");setTimeout(function(){if(!d.hasAttribute("data-services-anim"))d.classList.remove("js")},4000)})(document.documentElement)`;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={manrope.variable}>
-      <body>{children}</body>
+    // suppressHydrationWarning: o script abaixo adiciona a classe "js" antes do React hidratar.
+    <html lang="pt-BR" className={manrope.variable} suppressHydrationWarning>
+      <body>
+        <script dangerouslySetInnerHTML={{ __html: jsFlagScript }} />
+        {children}
+      </body>
     </html>
   );
 }

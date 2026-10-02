@@ -1,6 +1,7 @@
 import { ArrowUpRight, Braces, CornerDownRight } from "lucide-react";
 import { Container, SectionHeader } from "@/components/ui";
 import { ServiceCard } from "@/components/service-card";
+import { ServicesAnimation } from "@/components/services-animation";
 import { services, siteTypes, portfolioTypes } from "@/data/services";
 
 export function Services() {
@@ -23,11 +24,12 @@ export function Services() {
             integrações, sempre com foco em resultado.
           </p>
         </div>
-        <div className="services-grid">
+        <div className="services-grid" id="servicos-grid">
           {services.map((service, index) => (
             <ServiceCard key={service.title} service={service} index={index} />
           ))}
         </div>
+        <ServicesAnimation gridId="servicos-grid" />
         <div className="custom-note">
           <Braces size={19} aria-hidden="true" />
           <p>

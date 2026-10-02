@@ -927,6 +927,41 @@ ol {
 .service-card-link svg {
   color: #8a7be1;
 }
+
+/* Entrada sequencial dos cards (controlada por components/services-animation.tsx).
+   Só esconde quando há JS (classe "js" no <html>); sem JS, os cards ficam visíveis. */
+.service-card {
+  position: relative;
+}
+.js .services-grid .service-card:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(30px) scale(0.6);
+}
+/* Só durante a entrada: depois a classe sai e o hover volta à transição normal. */
+.services-grid .service-card.is-entering {
+  transition:
+    opacity var(--servicos-entrada, 600ms) ease-out,
+    transform var(--servicos-entrada, 600ms) cubic-bezier(0.2, 1.5, 0.4, 1),
+    border-color 0.25s,
+    background 0.25s;
+}
+/* Brilho roxo do card "atual": a sombra fica fixa numa camada e só a opacidade anima. */
+.service-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  box-shadow:
+    0 0 0 3px #6c4cf1,
+    0 12px 40px 4px rgba(108, 76, 241, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+.service-card.is-current::after {
+  opacity: 1;
+  transition-duration: 0.2s;
+}
 .custom-note {
   display: flex;
   align-items: center;
@@ -3459,7 +3494,8 @@ body:has(.project-dialog[open]) {
     animation: none !important;
     transition: none !important;
   }
-  .reveal-pending {
+  .reveal-pending,
+  .js .services-grid .service-card:not(.is-visible) {
     opacity: 1;
     transform: none;
   }

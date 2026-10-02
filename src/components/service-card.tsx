@@ -13,7 +13,6 @@ export function ServiceCard({
     <a
       href={`?tipo=${encodeURIComponent(service.title === "Sites" ? "Site" : service.title === "Landing Pages" ? "Landing Page" : service.title === "Portfólios" ? "Portfólio" : service.title === "Sistemas Web" ? "Sistema Web" : service.title === "Integrações" ? "Integração" : service.title === "SEO" ? "Outro" : service.title)}#orcamento`}
       className="service-card"
-      data-reveal
     >
       <div className="service-card-top">
         <span className="service-icon">
