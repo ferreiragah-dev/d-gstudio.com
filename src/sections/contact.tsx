@@ -53,7 +53,14 @@ export function Contact() {
             </a>
           )}
         </div>
-        <QuoteForm deliveryEnabled={!!process.env.QUOTE_WEBHOOK_URL} />
+        <QuoteForm
+          deliveryEnabled={
+            !!(
+              process.env.QUOTE_WEBHOOK_URL ||
+              (process.env.SMTP_USER && process.env.SMTP_PASSWORD)
+            )
+          }
+        />
       </Container>
     </section>
   );
