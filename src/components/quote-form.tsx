@@ -196,7 +196,6 @@ export function QuoteForm({ deliveryEnabled }: { deliveryEnabled: boolean }) {
               name="objective"
               label="Objetivo do projeto"
               placeholder="Ex.: apresentar minha empresa e receber novos contatos"
-              minLength={10}
               maxLength={500}
               required
               error={errors.objective}
@@ -239,7 +238,6 @@ export function QuoteForm({ deliveryEnabled }: { deliveryEnabled: boolean }) {
               label="Descrição detalhada do projeto"
               placeholder="Conte sua ideia, funcionalidades, referências e o que mais for importante para você."
               rows={4}
-              minLength={20}
               maxLength={5000}
               required
               error={errors.description}

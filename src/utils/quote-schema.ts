@@ -46,7 +46,7 @@ export const quoteSchema = z.object({
   objective: z
     .string()
     .trim()
-    .min(10, "Conte seu objetivo em pelo menos 10 caracteres.")
+    .min(1, "Conte qual é o objetivo do projeto.")
     .max(500, "Use até 500 caracteres."),
   existingSite: z.enum(["Sim", "Não"], { error: "Selecione uma opção." }),
   deadline: z.enum(deadlines, { error: "Selecione o prazo desejado." }),
@@ -54,7 +54,7 @@ export const quoteSchema = z.object({
   description: z
     .string()
     .trim()
-    .min(20, "Conte um pouco mais: pelo menos 20 caracteres.")
+    .min(1, "Descreva brevemente o seu projeto.")
     .max(5000, "Use até 5.000 caracteres."),
   consent: z.literal(true, { error: "Autorize o contato para continuar." }),
   plan: z.enum(["", "Essencial", "Profissional", "Personalizado"]).default(""),
