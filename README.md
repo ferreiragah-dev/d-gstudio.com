@@ -4,6 +4,25 @@ Site institucional completo em português, com Next.js App Router, React, TypeSc
 
 ## Executar
 
+### Envio de orçamento por SMTP Hostinger
+
+O formulário envia um e-mail para **comercial@degstudio.com.br**, com todos os campos preenchidos, versão HTML e texto simples. O template está em `src/utils/quote-email.ts`; a opção Responder usa o e-mail do visitante. O remetente é a conta autenticada no SMTP.
+
+Configure estas variáveis privadas no ambiente do servidor (Easypanel → Ambiente ou `.env.local`):
+
+```dotenv
+SMTP_HOST=smtp.hostinger.com
+SMTP_PORT=465
+SMTP_USER=comercial@degstudio.com.br
+SMTP_PASSWORD=sua-senha-da-conta-de-email
+```
+
+Use a senha da caixa de e-mail, não a senha do hPanel. Reinicie o serviço após configurar. A porta 465 usa TLS; a porta 587 também é suportada com STARTTLS obrigatório. [Configuração oficial da Hostinger](https://www.hostinger.com/support/1575756-how-to-get-email-account-configuration-details-for-hostinger-email/).
+
+SMTP tem prioridade sobre o webhook descrito abaixo. Sem credenciais SMTP e sem webhook, o formulário continua funcionando como rascunho, sem confirmar um envio real. A disponibilidade de envio é consultada em tempo de execução; as credenciais são usadas somente no servidor e não precisam ser fornecidas durante o build.
+
+O botão flutuante do WhatsApp é compartilhado pelo layout de todas as páginas e abre `https://wa.me/message/4Q2K3QFUH6QUP1`.
+
 Requisito: Node.js 20.9 ou superior (desenvolvido com Node 24).
 
 ```sh

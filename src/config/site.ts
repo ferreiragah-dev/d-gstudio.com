@@ -8,7 +8,8 @@ function httpsUrl(value?: string) {
   }
 }
 const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP?.replace(/\D/g, "") ?? "";
-const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() ?? "";
+const email =
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || "comercial@degstudio.com.br";
 
 export const siteConfig = {
   name: "D&G Studio",
@@ -21,9 +22,7 @@ export const siteConfig = {
   instagram: httpsUrl(process.env.NEXT_PUBLIC_INSTAGRAM),
 };
 
-export const whatsappUrl = siteConfig.whatsapp
-  ? `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent("Olá, D&G Studio! Quero conversar sobre um projeto.")}`
-  : undefined;
+export const whatsappUrl = "https://wa.me/message/4Q2K3QFUH6QUP1";
 
 export const navigation = [
   { label: "Início", href: "#inicio" },

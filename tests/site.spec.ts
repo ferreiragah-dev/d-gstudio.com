@@ -1,6 +1,16 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
+test("WhatsApp flutuante aparece em todas as páginas", async ({ page }) => {
+  for (const path of ["/", "/privacidade", "/pagina-inexistente"]) {
+    await page.goto(path);
+    const link = page.getByRole("link", { name: "Fale com a D&G Studio pelo WhatsApp" });
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute("href", "https://wa.me/message/4Q2K3QFUH6QUP1");
+    expect(await link.evaluate((element) => getComputedStyle(element).position)).toBe("fixed");
+  }
+});
+
 test("responsividade, conteúdo e console nas larguras solicitadas", async ({
   page,
 }) => {
@@ -102,7 +112,7 @@ test("formulário valida, preserva dados em falha e gera resumo sem falso envio"
     .first()
     .fill("Pessoa de Teste");
   await page.getByLabel("E-mail", { exact: false }).fill("teste@example.com");
-  await page.getByLabel("WhatsApp", { exact: false }).fill("11999999999");
+  await page.getByRole("textbox", { name: "WhatsApp" }).fill("11999999999");
   await page
     .getByLabel("Objetivo do projeto")
     .fill("Apresentar os serviços de uma empresa");

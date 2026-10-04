@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { siteConfig } from "@/config/site";
+import { WhatsAppFloat } from "@/components/whatsapp-float";
 import "./globals.css";
 
 const manrope = localFont({
@@ -48,6 +49,9 @@ export default function RootLayout({
       <body>
         <script dangerouslySetInnerHTML={{ __html: jsFlagScript }} />
         {children}
+        <nav aria-label="Contato pelo WhatsApp">
+          <WhatsAppFloat />
+        </nav>
       </body>
     </html>
   );
