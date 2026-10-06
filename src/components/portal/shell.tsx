@@ -56,7 +56,10 @@ export function PortalShell({
   const path = usePathname();
   const params = useSearchParams();
   const router = useRouter();
-  const selected = params.get("projeto") || projects[0]?.id || "";
+  const choosingProject =
+    user.role === "team" && path === "/equipe" && !params.get("projeto");
+  const selected =
+    params.get("projeto") || (choosingProject ? "" : projects[0]?.id) || "";
   const project = projects.find((project) => project.id === selected);
   const links = (
     <>
@@ -65,10 +68,21 @@ export function PortalShell({
         <small>PORTAL DO CLIENTE</small>
       </Link>
       <nav aria-label="Navegação do portal">
+        {user.role === "team" && (
+          <Link
+            href="/equipe"
+            aria-current={choosingProject ? "page" : undefined}
+            onClick={() => drawer.current?.close()}
+          >
+            <FolderKanban size={16} aria-hidden="true" />
+            Todos os projetos
+          </Link>
+        )}
         {portalNavigation
           .filter(
             (item) =>
-              item.section !== "financeiro" || project?.can_view_finance,
+              !choosingProject &&
+              (item.section !== "financeiro" || project?.can_view_finance),
           )
           .map((item) => {
             const Icon = icons[item.section];
@@ -86,7 +100,7 @@ export function PortalShell({
               </Link>
             );
           })}
-        {user.role === "team" && (
+        {user.role === "team" && !choosingProject && (
           <Link href={`/equipe${selected ? `?projeto=${selected}` : ""}`}>
             <ShieldCheck size={16} />
             Administrar portal
@@ -149,7 +163,12 @@ export function PortalShell({
           >
             <Menu size={19} />
           </button>
-          {projects.length > 1 ? (
+          {choosingProject ? (
+            <div className="portal-current">
+              <small>Administração</small>
+              <strong>Todos os projetos</strong>
+            </div>
+          ) : projects.length > 1 ? (
             <Select
               id="project-switcher"
               label="Projeto atual"

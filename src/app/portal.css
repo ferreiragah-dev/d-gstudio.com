@@ -1,4 +1,37 @@
 /* Portal: reuse the site's typography, palette, controls and spacing tokens. */
+.portal-project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 20px;
+}
+.portal-project-choice {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  color: var(--text);
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+.portal-project-choice:hover {
+  border-color: var(--text);
+  transform: translateY(-2px);
+}
+.portal-project-choice:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
+}
+.portal-project-choice > .text-link {
+  margin-top: auto;
+}
+.portal-project-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
 .navigation > .portal-menu-link {
   color: var(--text);
   border: 1px solid var(--border);
