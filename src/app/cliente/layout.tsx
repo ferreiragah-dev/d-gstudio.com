@@ -1,0 +1,12 @@
+import type { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Portal do Cliente",
+  robots: { index: false, follow: false },
+};
+export default function ClientLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return children;
+}

@@ -8,15 +8,20 @@
     "start": "next start --hostname 0.0.0.0",
     "lint": "eslint .",
     "typecheck": "next typegen && tsc --noEmit",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "portal:inspect": "node --env-file-if-exists=.env.local scripts/portal-db.mjs inspect",
+    "portal:migrate": "node --env-file-if-exists=.env.local scripts/portal-db.mjs migrate",
+    "portal:create-team": "node --env-file-if-exists=.env.local scripts/portal-db.mjs create-team"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.3.0",
     "lucide-react": "^1.49.0",
     "next": "^16.3.8",
     "nodemailer": "^10.0.14",
+    "pg": "^8.23.1",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
+    "server-only": "^0.0.1",
     "zod": "^4.6.5"
   },
   "devDependencies": {
@@ -25,6 +30,7 @@
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.6.4",
     "@types/nodemailer": "^8.0.2",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.39.5",

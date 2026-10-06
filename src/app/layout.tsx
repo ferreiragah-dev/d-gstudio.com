@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { siteConfig } from "@/config/site";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
 import "./globals.css";
+import "./portal.css";
 
 const manrope = localFont({
   src: "../../assets/fonts/manrope-latin-wght-normal.woff2",

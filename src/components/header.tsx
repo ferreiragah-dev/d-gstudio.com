@@ -1,36 +1,17 @@
 "use client";
+import Link from "next/link";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Menu, MoonStar, SunMedium, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Logo } from "./logo";
 import { navigation } from "@/config/site";
 import { Container } from "./ui";
+import { ThemeToggle } from "./theme-toggle";
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const toggle = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    const storedTheme = window.localStorage.getItem("dgstudio-theme");
-    const preferredTheme =
-      storedTheme === "light" || storedTheme === "dark"
-        ? storedTheme
-        : window.matchMedia("(prefers-color-scheme: light)").matches
-          ? "light"
-          : "dark";
-
-    setTheme(preferredTheme);
-    document.documentElement.setAttribute("data-theme", preferredTheme);
-    document.documentElement.style.colorScheme = preferredTheme;
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    document.documentElement.style.colorScheme = theme;
-    window.localStorage.setItem("dgstudio-theme", theme);
-  }, [theme]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -56,10 +37,6 @@ export function Header() {
     };
   }, [open]);
 
-  const toggleTheme = () => {
-    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
-  };
-
   return (
     <header className={`site-header ${scrolled || open ? "is-scrolled" : ""}`}>
       <Container className="header-inner">
@@ -81,6 +58,13 @@ export function Header() {
               {item.label}
             </a>
           ))}
+          <Link
+            href="/cliente/login"
+            className="portal-menu-link"
+            onClick={() => setOpen(false)}
+          >
+            Acompanhar meu projeto
+          </Link>
           <a
             href="#orcamento"
             className="mobile-quote"
@@ -89,17 +73,7 @@ export function Header() {
             Solicitar orçamento <ArrowUpRight size={16} />
           </a>
         </nav>
-        <button
-          type="button"
-          className="theme-toggle"
-          onClick={toggleTheme}
-          aria-label={
-            theme === "dark" ? "Ativar modo claro" : "Ativar modo escuro"
-          }
-          title={theme === "dark" ? "Ativar modo claro" : "Ativar modo escuro"}
-        >
-          {theme === "dark" ? <SunMedium size={16} /> : <MoonStar size={16} />}
-        </button>
+        <ThemeToggle />
         <a href="#orcamento" className="button header-cta">
           Solicitar orçamento <ArrowUpRight size={16} aria-hidden="true" />
         </a>

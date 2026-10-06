@@ -49,6 +49,19 @@ export default function Privacy() {
             análise. O formulário mantém as informações apenas enquanto a página
             permanece aberta; o arquivo baixado fica sob seu controle.
           </p>
+          <h2>Portal do Cliente</h2>
+          <p>
+            A área privada utiliza um cookie de sessão necessário para
+            autenticar seu acesso. Quando você escolhe manter conectado, a
+            sessão pode durar até 30 dias; caso contrário, ela expira em até 12
+            horas. Projetos, arquivos, mensagens, solicitações e decisões de
+            aprovação ficam armazenados no banco da D&G Studio para acompanhar a
+            prestação do serviço. Aprovações registram usuário, data, horário,
+            versão e comentário. O acesso é limitado aos clientes vinculados ao
+            projeto e à equipe autorizada. Utilize o contato abaixo para
+            solicitar correção ou exclusão, observadas as obrigações contratuais
+            aplicáveis.
+          </p>
           <h2>Contato sobre seus dados</h2>
           <p>
             Para solicitar informações, correção ou exclusão de dados enviados,
