@@ -43,6 +43,7 @@ export function Footer() {
             <Link href="/#processo">Processo</Link>
             <Link href="/#portfolio">Portfólio</Link>
             <Link href="/#orcamento">Orçamento</Link>
+            <Link href="/cliente/login">Acompanhar meu projeto</Link>
           </div>
           <div className="footer-column">
             <h2>Vamos conversar</h2>

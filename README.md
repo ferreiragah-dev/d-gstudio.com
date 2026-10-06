@@ -1,5 +1,7 @@
 # D&G Studio
 
+O projeto também inclui o **Portal do Cliente**, com acesso em `/cliente/login` e administração em `/equipe`. Configuração do PostgreSQL, primeiro acesso e operação: [PORTAL.md](./PORTAL.md).
+
 Site institucional completo em português, com Next.js App Router, React, TypeScript, Tailwind CSS, Lucide e fonte Manrope local. Os dispositivos e os quatro conceitos de portfólio são feitos em HTML/CSS: sem imagens remotas, clientes inventados ou números comerciais fictícios. Animações leves em CSS e IntersectionObserver, com suporte a `prefers-reduced-motion`.
 
 ## Executar

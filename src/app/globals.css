@@ -1326,7 +1326,7 @@ ol {
   flex-grow: 1;
   font-size: 4px;
   letter-spacing: 1.1px;
-  color: #585d56;
+  color: #080b16;
   padding-right: 20px;
 }
 .project-card:nth-child(2) .project-open {
@@ -3122,7 +3122,7 @@ html[data-theme="light"] .field textarea {
 html[data-theme="light"] .field input::placeholder,
 html[data-theme="light"] .field textarea::placeholder,
 html[data-theme="light"] .field select:has(option:checked[value=""]) {
-  color: #75819a;
+  color: var(--text-muted);
 }
 html[data-theme="light"] .field-error,
 html[data-theme="light"] .feedback-error {
