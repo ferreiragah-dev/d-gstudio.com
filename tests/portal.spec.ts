@@ -410,6 +410,34 @@ test.describe("portal conectado ao PostgreSQL", () => {
       ).unread,
     ).toBe(0);
   });
+  test("admin escolhe e troca projetos pela visão geral", async ({ page }) => {
+    await login(page.request, emailTeam);
+    await page.goto("/equipe");
+    await expect(
+      page.getByRole("heading", { name: "Todos os projetos" }),
+    ).toBeVisible();
+    const cards = page.locator(".portal-project-choice");
+    await expect(cards.filter({ hasText: "Projeto de teste A" })).toBeVisible();
+    await expect(cards.filter({ hasText: "Projeto privado B" })).toBeVisible();
+    await cards.filter({ hasText: "Projeto de teste A" }).click();
+    await expect(page).toHaveURL(new RegExp(`/equipe\\?projeto=${projectA}$`));
+    await expect(
+      page.getByRole("heading", { name: "Projeto de teste A", exact: true }),
+    ).toBeVisible();
+    await page
+      .locator(".portal-sidebar")
+      .getByRole("link", { name: "Todos os projetos" })
+      .click();
+    await page
+      .locator(".portal-project-choice")
+      .filter({ hasText: "Projeto privado B" })
+      .click();
+    await expect(page).toHaveURL(new RegExp(`/equipe\\?projeto=${projectB}$`));
+    await expect(
+      page.getByRole("heading", { name: "Projeto privado B", exact: true }),
+    ).toBeVisible();
+  });
+
   test("administração publica entrega e aprovação automaticamente", async ({
     request,
   }) => {

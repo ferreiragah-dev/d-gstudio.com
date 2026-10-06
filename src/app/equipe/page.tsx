@@ -7,6 +7,7 @@ import { uuid } from "@/utils/portal/validation";
 import type { PortalRecord } from "@/types/portal";
 import { AdminConsole } from "@/components/portal/admin-console";
 import { ButtonLink } from "@/components/ui";
+import { ProjectPicker } from "@/components/portal/project-picker";
 export default async function TeamPage({
   searchParams,
 }: {
@@ -15,9 +16,11 @@ export default async function TeamPage({
   const user = await pageUser(true);
   const params = await searchParams;
   const projects = await listProjects(user);
+  if (!params.projeto && params.gestao !== "1")
+    return <ProjectPicker projects={projects} />;
   const id = uuid.safeParse(params.projeto).success
     ? params.projeto
-    : projects[0]?.id;
+    : undefined;
   const entity =
     params.tipo &&
     (Object.hasOwn(adminEntities, params.tipo) || params.tipo === "requests")
